@@ -6,7 +6,6 @@ public class OutputView {
 
     public void printGameStart() {
         print(OutputMessage.GAME_START);
-        printLineBreak();
     }
 
     public void printBall(final int ballCount) {
@@ -23,12 +22,10 @@ public class OutputView {
 
     public void printGameEnd() {
         print(OutputMessage.GAME_END);
-        printLineBreak();
     }
 
     public void printGameMenu() {
         print(OutputMessage.GAME_MENU);
-        printLineBreak();
     }
 
     public void printLineBreak() {
