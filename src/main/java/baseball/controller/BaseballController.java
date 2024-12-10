@@ -24,7 +24,7 @@ public class BaseballController {
     }
 
     public void run() {
-        retryHandler.retryUntilTrue(this::gameStart, this::isCompletedGame);
+        retryHandler.retryUntilFalse(this::gameStart, this::isCompletedGame);
     }
 
     private boolean isCompletedGame() {

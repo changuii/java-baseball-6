@@ -5,7 +5,7 @@ import java.util.function.Function;
 
 public class RetryHandler {
 
-    public void retryUntilTrue(final Runnable logic, final BooleanSupplier flag) {
+    public void retryUntilFalse(final Runnable logic, final BooleanSupplier flag) {
         do {
             logic.run();
         } while (flag.getAsBoolean());
