@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class InputValidator {
-    private static final String NUMBERS_PATTERN_REGEX = "^[0-9]{3}$";
+    private static final String NUMBERS_PATTERN_REGEX = "^[1-9]{3}$";
     private static final String ANSWER_PATTERN_REGEX = "^[1-2]$";
     private static final Pattern NUMBERS_PATTERN = Pattern.compile(NUMBERS_PATTERN_REGEX);
     private static final Pattern ANSWER_PATTERN = Pattern.compile(ANSWER_PATTERN_REGEX);

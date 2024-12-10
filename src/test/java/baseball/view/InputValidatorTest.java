@@ -67,7 +67,7 @@ public class InputValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "2"})
-    void 사용자_응답이_1혹은2_라면_예외가_발생하지_않는다(final String input){
+    void 사용자_응답이_1혹은2_라면_예외가_발생하지_않는다(final String input) {
         inputValidator.validateInputAnswer(input);
     }
 
