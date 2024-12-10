@@ -1,5 +1,133 @@
 # java-baseball-6
 
+
+## 프로젝트 소개
+
+> 소개말
+> 베이스볼 게임을 할 수 있는 자바 프로젝트입니다.  
+> 컴퓨터가 만든 숫자를 사용자는 맞추는 형식으로 진행하며, 컴퓨터가 맞추는 서비스는 제공하지 않습니다.
+### 기능 소개
+
+1. 사용자는 컴퓨터가 만든 숫자 3개를 맞추는 형식으로 게임이 진행됩니다.
+2. 다음의 규칙에 따라 힌트를 받을 수 있습니다.
+   - N볼 : 사용자가 제공한 숫자 번호들에 N개의 정답 숫자가 포함되어 있지만, 자리가 일치하지 않습니다.
+   - N스트라이크 : 사용자가 제공한 숫자 번호들에 N개의 정답 숫자가 포함되어있으며, 자리도 일치합니다.
+   - 낫싱 : 사용자가 제공한 숫자들 중 어느것도 정답 번호에 포함되지 않습니다.
+   - 3스트라이크 : 정답
+
+---
+
+### 기능 예제
+
+**1.사용자의 숫자 입력**
+
+- 사용자는 정답을 맞추기 위해 숫자를 입력할 수 있습니다.
+
+```
+숫자를 입력해주세요 : 123
+```
+
+**2. 정답에 대한 힌트 제공**
+- 사용자의 입력값에 대하여 힌트를 제공받을 수 있습니다.
+```
+숫자를 입력해주세요 : 123
+2볼
+```
+
+**3. 게임 재시작 혹은 종료**
+- 사용자는 정답을 맞춘 후 게임을 재시작하거나 종료할 수 있습니다.
+```
+3스트라이크
+3개의 숫자를 모두 맞히셨습니다! 게임 종료
+게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
+```
+
+### 입력 가이드
+
+**1. 사용자의 숫자 입력**
+
+- 입력은 3개의 숫자를 붙여서 입력합니다.
+- 이 경우, 중복되는 숫자나 0 혹은 문자가 포함될 경우 게임이 종료됩니다.
+
+```
+숫자를 입력해주세요 : 123
+
+숫자를 입력해주세요 : 456
+
+숫자를 입력해주세요 : 789
+```
+
+**2. 사용자의 재시작 혹은 종료 입력**
+- 이 입력은 1 혹은 2만 입력될 수 있습니다.
+- 이 외의 경우 게임은 종료됩니다.
+```
+게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
+2
+
+게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
+1
+```
+
+### 프로젝트 패키지 구조
+
+**Class Diagram**
+
+```mermaid
+classDiagram
+   direction BT
+   class BaseballGame {
+      - int NUMBERS_COUNT
+      - List~Integer~ numbers
+      + from(List~Integer~) BaseballGame
+      - isStrike(int, int) boolean
+      + play(List~Integer~) BaseballResult
+      - isBall(int, int) boolean
+   }
+   class BaseballResult {
+      - int strikeCount
+      - int ballCount
+      - int CORRECT_COUNT
+      - int ZERO
+      + of(int, int) BaseballResult
+      + hasBallCount() boolean
+      + getStrikeCount() int
+      + isNothing() boolean
+      + getBallCount() int
+      + isCorrect() boolean
+      + hasStrikeCount() boolean
+   }
+
+
+```
+
+**트리 구조**
+
+```
+baseball
+    ├── Application.java
+    ├── component
+    │   ├── BaseballGameGenerator.java
+    │   ├── BaseballGameNumbersGenerator.java
+    │   └── GameNumbersGenerator.java
+    ├── config
+    │   └── BaseballConfig.java
+    ├── controller
+    │   └── BaseballController.java
+    ├── domain
+    │   ├── BaseballGame.java
+    │   └── BaseballResult.java
+    ├── enums
+    │   └── OutputMessage.java
+    ├── handler
+    │   └── RetryHandler.java
+    └── view
+        ├── InputParser.java
+        ├── InputValidator.java
+        ├── InputView.java
+        └── OutputView.java
+```
+
+
 ### 요구사항 명세
 
 **입력**
