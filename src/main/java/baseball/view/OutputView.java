@@ -6,6 +6,11 @@ public class OutputView {
 
     public void printGameStart() {
         print(OutputMessage.GAME_START);
+        printLineBreak();
+    }
+
+    public void printIntroduceUserInput() {
+        print(OutputMessage.INTRODUCE_USER_INPUT);
     }
 
     public void printBall(final int ballCount) {
@@ -22,10 +27,12 @@ public class OutputView {
 
     public void printGameEnd() {
         print(OutputMessage.GAME_END);
+        printLineBreak();
     }
 
     public void printGameMenu() {
         print(OutputMessage.GAME_MENU);
+        printLineBreak();
     }
 
     public void printLineBreak() {
@@ -33,6 +40,6 @@ public class OutputView {
     }
 
     private void print(Object message, Object... values) {
-        System.out.println(String.format(message.toString(), values));
+        System.out.print(String.format(message.toString(), values));
     }
 }

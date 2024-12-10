@@ -2,9 +2,11 @@ package baseball.controller;
 
 import baseball.component.BaseballGameGenerator;
 import baseball.domain.BaseballGame;
+import baseball.domain.BaseballResult;
 import baseball.handler.RetryHandler;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.List;
 
 public class BaseballController {
 
@@ -22,7 +24,7 @@ public class BaseballController {
     }
 
     public void run() {
-        retryHandler.retryUntilAnswerYes(this::gameStart, this::isCompletedGame);
+        retryHandler.retryUntilTrue(this::gameStart, this::isCompletedGame);
     }
 
     private boolean isCompletedGame() {
@@ -34,6 +36,30 @@ public class BaseballController {
     private void gameStart() {
         outputView.printGameStart();
         BaseballGame baseballGame = baseballGameGenerator.generate();
+        retryHandler.retryUntilTrue(this::gamePlay, baseballGame);
+        outputView.printGameEnd();
+    }
+
+
+    private Boolean gamePlay(final BaseballGame baseballGame) {
+        outputView.printIntroduceUserInput();
+        List<Integer> userNumbers = inputView.readNumbers();
+        BaseballResult baseballResult = baseballGame.play(userNumbers);
+        outputResult(baseballResult);
+        return baseballResult.isCorrect();
+    }
+
+    private void outputResult(final BaseballResult baseballResult) {
+        if (baseballResult.hasBallCount()) {
+            outputView.printBall(baseballResult.getBallCount());
+        }
+        if (baseballResult.hasStrikeCount()) {
+            outputView.printStrike(baseballResult.getStrikeCount());
+        }
+        if (baseballResult.isNothing()) {
+            outputView.printNothing();
+        }
+        outputView.printLineBreak();
     }
 
 }

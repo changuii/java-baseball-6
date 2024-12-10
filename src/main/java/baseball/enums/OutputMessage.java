@@ -1,6 +1,7 @@
 package baseball.enums;
 
 public enum OutputMessage {
+    INTRODUCE_USER_INPUT("숫자를 입력해주세요 : "),
 
     BASEBALL_NOTHING("낫싱"),
     BASEBALL_BALL("%d볼 "),
