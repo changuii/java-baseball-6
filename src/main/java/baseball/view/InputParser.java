@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class InputParser {
     private static final String NUMBERS_DELIMITER = "";
+    private static final String ANSWER_YES = "1";
 
     public List<Integer> parseNumbers(final String input) {
         return Arrays.stream(input.split(NUMBERS_DELIMITER))
@@ -13,7 +14,11 @@ public class InputParser {
                 .collect(Collectors.toList());
     }
 
-    public int parseInt(final String input) {
+    public boolean parseAnswer(final String input){
+        return input.equals(ANSWER_YES);
+    }
+
+    private int parseInt(final String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {

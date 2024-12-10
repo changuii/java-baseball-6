@@ -21,5 +21,11 @@ public class InputView {
         return numbers;
     }
 
+    public boolean readAnswer() {
+        String input = Console.readLine();
+        inputValidator.validateInputAnswer(input);
+        return inputParser.parseAnswer(input);
+    }
+
 
 }
