@@ -50,16 +50,28 @@ public class BaseballController {
     }
 
     private void outputResult(final BaseballResult baseballResult) {
+        outputBallCount(baseballResult);
+        outputStrikeCount(baseballResult);
+        outputNothing(baseballResult);
+        outputView.printLineBreak();
+    }
+
+    private void outputBallCount(final BaseballResult baseballResult) {
         if (baseballResult.hasBallCount()) {
             outputView.printBall(baseballResult.getBallCount());
         }
+    }
+
+    private void outputStrikeCount(final BaseballResult baseballResult) {
         if (baseballResult.hasStrikeCount()) {
             outputView.printStrike(baseballResult.getStrikeCount());
         }
+    }
+
+    private void outputNothing(final BaseballResult baseballResult) {
         if (baseballResult.isNothing()) {
             outputView.printNothing();
         }
-        outputView.printLineBreak();
     }
 
 }
