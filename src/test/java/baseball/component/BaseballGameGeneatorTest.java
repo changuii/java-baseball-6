@@ -3,9 +3,9 @@ package baseball.component;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.BaseballGame;
+import baseball.mock.MockGameNumberGenerator;
 import java.util.List;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -41,18 +41,4 @@ public class BaseballGameGeneatorTest {
 
     }
 
-
-    private class MockGameNumberGenerator implements GameNumbersGenerator {
-
-        private List<Integer> numbers;
-
-        @Override
-        public List<Integer> generate() {
-            return this.numbers;
-        }
-
-        public void setNextNumbers(final List<Integer> numbers) {
-            this.numbers = numbers;
-        }
-    }
 }
